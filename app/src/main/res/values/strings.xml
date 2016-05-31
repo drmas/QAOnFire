@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">QA Fire</string>
+    <string name="title_activity_questions">QuestionsActivity</string>
+    <string name="action_settings">Settings</string>
+</resources>
