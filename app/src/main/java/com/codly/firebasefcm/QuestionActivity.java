@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,6 +42,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         final ListView listView = (ListView) findViewById(R.id.listview);
 
+
         questionRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -47,7 +50,20 @@ public class QuestionActivity extends AppCompatActivity {
                 View v = getLayoutInflater().inflate(R.layout.question, null);
                 TextView question = (TextView) v.findViewById(R.id.txtQuestion);
 
-                question.setText(dataSnapshot.getValue(Question.class).getQuestion());
+                Question data = dataSnapshot.getValue(Question.class);
+                question.setText(data.getQuestion());
+
+                ImageView imageView = (ImageView) v.findViewById(R.id.image);
+                // add question image
+                imageView.setVisibility(View.VISIBLE);
+
+                Glide
+                        .with(QuestionActivity.this)
+                        .load(data.getImageUrl())
+                        .centerCrop()
+                        .crossFade()
+                        .into(imageView);
+
                 listView.addHeaderView(v);
             }
 
@@ -78,5 +94,7 @@ public class QuestionActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
 }

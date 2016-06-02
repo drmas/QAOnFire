@@ -10,15 +10,17 @@ public class Question {
     private String user;
     private String question;
     private Boolean answered;
+    private String imageUrl;
 
     public  Question(){}
 
-    public Question(String date, String user, String question, Boolean answered) {
+    public Question(String date, String user, String question, Boolean answered, String imageUrl) {
 
         this.date = date;
         this.user = user;
         this.question = question;
         this.answered = answered;
+        this.imageUrl = imageUrl;
     }
 
     public String getDate() {
@@ -37,4 +39,7 @@ public class Question {
         return answered;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 }

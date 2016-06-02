@@ -6,4 +6,5 @@
     <string name="new_question">New Question</string>
     <string name="what_is_your_question">What is your question ?</string>
     <string name="question_details">Question Details</string>
+    <string name="upload_photo">Upload Photo</string>
 </resources>
