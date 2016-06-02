@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -83,6 +84,7 @@ public class NewQuestionActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                         imageUrl = taskSnapshot.getDownloadUrl().toString();
+                        Toast.makeText(NewQuestionActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
